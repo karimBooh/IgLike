@@ -5,4 +5,6 @@ export const SubmitButtonStyles = styled(Button).attrs((props: { disabled: boole
     variant: 'contained',
     type: 'submit',
     disabled: props.disabled
-}))``;
+}))`
+    width: 100%;
+`;
