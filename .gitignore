@@ -1,4 +1,6 @@
 # compiled output
+
+/back/dist
 /dist
 /node_modules
 /front/node_modules

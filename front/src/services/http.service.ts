@@ -14,11 +14,14 @@ export class HttpService<T> {
 
     jwtInterceptor(): void {
         this.http.interceptors.request.use((config: AxiosRequestConfig) => {
+            if (config.headers) {
+                config.headers.authorization = `bearer ${localStorage.getItem('jwt')}`;
+            }
             return config;
         });
     }
 
-    async get(url: string, config: AxiosRequestConfig): Promise<T> {
+    async get<U>(url: string, config: AxiosRequestConfig): Promise<T | U> {
         return await this.http.get(url, config);
     }
 

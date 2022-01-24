@@ -10,7 +10,7 @@ export class AuthService extends HttpService<User> {
         return await this.post('/signUp', user);
     }
 
-    async connection(user: Pick<User, 'email' | 'password'>) {
-        return await this.get('/connection', { params: user });
+    async connection(user: Pick<User, 'email' | 'password'>): Promise<string> {
+        return this.get<any>('/login', { params: user });
     }
 }

@@ -9,14 +9,10 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import logo from '../../assets/instagram.png';
 import { useForm } from 'react-hook-form';
 import { onSubmit } from './login.controller';
-
-type Inputs = {
-    example: string;
-    exampleRequired: string;
-};
+import { User } from '../../../../interfaces/user';
 
 export function Login() {
-    const { register, handleSubmit, formState } = useForm<Inputs>({ mode: 'onChange' });
+    const { register, handleSubmit, formState } = useForm<User>({ mode: 'onChange' });
 
     return (
         <Layout>
@@ -24,10 +20,10 @@ export function Login() {
                 <PhotoItem item xs={0} sm={6} md={5} />
                 <LoginItem item xs={12} sm={6} md={5}>
                     <LoginForm onSubmit={handleSubmit(onSubmit)}>
-                        <img src={logo} width={'200px'} />
+                        <img src={logo} width={'200px'} alt={'logo'} />
                         <EmailInput register={register} />
                         <PasswordInput register={register} />
-                        <SubmitButton disabled={!formState.isValid} />
+                        <SubmitButton disabled={!formState.isValid} name={'connexion'} />
                         <DividerStyles>ou</DividerStyles>
                         <Button size="small" startIcon={<FacebookIcon />}>
                             Se connecter avec facebook

@@ -27,7 +27,7 @@ export function SignUp() {
                 <Input register={register} name={'Name'} require={true} />
                 <Input register={register} name={'UserName'} require={true} />
                 <PasswordInput register={register} />
-                <SubmitButton disabled={!formState.isValid} />
+                <SubmitButton disabled={!formState.isValid} name={'Sign up'} />
             </SignUpForm>
             <ConnectionRedirection>
                 <Typography>
