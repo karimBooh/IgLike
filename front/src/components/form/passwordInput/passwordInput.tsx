@@ -9,7 +9,7 @@ export function PasswordInput(props: { register: any }) {
             <OutlinedInput
                 id="outlined-password-input"
                 type="password"
-                {...props.register('Password', { required: true })}
+                {...props.register('password', { required: true })}
                 autoComplete="current-password"
             />
         </PasswordForm>

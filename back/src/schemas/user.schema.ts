@@ -1,14 +1,13 @@
 import { EGender, User } from '@karibooh/ig-interfaces';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import * as mongoose from 'mongoose';
 import { BaseSchema } from '../shared/base-model/base-model.schema';
 
 @Schema()
 export class UserSchema extends BaseSchema implements User {
-    @Prop({ type: mongoose.Schema.Types.ObjectId, required: true })
+    @Prop()
     name: string;
 
-    @Prop({ type: mongoose.Schema.Types.ObjectId, required: true })
+    @Prop()
     username: string;
 
     @Prop({
@@ -24,6 +23,9 @@ export class UserSchema extends BaseSchema implements User {
 
     @Prop()
     birthday: Date;
+
+    @Prop()
+    password: string;
 
     @Prop()
     isAdmin?: boolean;

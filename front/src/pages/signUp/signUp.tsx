@@ -24,14 +24,14 @@ export function SignUp() {
                 </Button>
                 <DividerStyles>ou</DividerStyles>
                 <EmailInput register={register} />
-                <Input register={register} name={'Name'} require={true} />
-                <Input register={register} name={'UserName'} require={true} />
+                <Input register={register} name={'name'} require={true} />
+                <Input register={register} name={'username'} require={true} />
                 <PasswordInput register={register} />
                 <SubmitButton disabled={!formState.isValid} name={'Sign up'} />
             </SignUpForm>
             <ConnectionRedirection>
                 <Typography>
-                    Vous avez un compte ?<Link to={'/connexion'}> Connectez-vous </Link>
+                    Vous avez un compte ?<Link to={'/login'}> Connectez-vous </Link>
                 </Typography>
             </ConnectionRedirection>
         </Layout>

@@ -1,7 +1,7 @@
 import { HttpService } from '../http.service';
 import { User } from '@karibooh/ig-interfaces';
 
-export class AuthService extends HttpService<User> {
+export class AuthService extends HttpService<any> {
     constructor() {
         super('/auth');
     }
@@ -10,7 +10,7 @@ export class AuthService extends HttpService<User> {
         return await this.post('/signup', user);
     }
 
-    async connection(user: Pick<User, 'email' | 'password'>): Promise<string> {
-        return this.get<any>('/login', { params: user });
+    async connection(user: Pick<User, 'email' | 'password'>): Promise<{ access_token: string }> {
+        return this.post('/login', user);
     }
 }

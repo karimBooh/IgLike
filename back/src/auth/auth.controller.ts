@@ -5,7 +5,6 @@ import { LocalAuthGuard } from './guard/local-auth.guard';
 import { Public } from '../shared/decorator/public';
 import { User } from '@karibooh/ig-interfaces';
 import { UserService } from '../user/user.service';
-import { ObjectId } from 'bson';
 
 @Controller('auth')
 export class AuthController {
@@ -15,6 +14,7 @@ export class AuthController {
     @UseGuards(LocalAuthGuard)
     @Post('login')
     async login(@Req() req: Request): Promise<{ access_token: string }> {
+        console.log(req.user);
         return this._authService.login(req.user as User);
     }
 
@@ -22,6 +22,6 @@ export class AuthController {
     @Post('signup')
     async signup(@Req() req: Request, @Body() user: User): Promise<User> {
         console.log(user);
-        return this._userService.create(user, new ObjectId('hello'));
+        return this._userService.create(user);
     }
 }

@@ -23,9 +23,9 @@ export type QueryParams<T extends Base> = {
 export class BaseModelService<T extends Base> {
     constructor(private model: Model<T>, private schema?: Type<T>) {}
 
-    public create(data: T, profileId: ObjectId, populateOptions?: PopulateOptions<T>): Promise<T>;
-    public create(data: T[], profileId: ObjectId, populateOptions?: PopulateOptions<T>): Promise<T[]>;
-    public async create(data: T | T[], profileId: ObjectId, populateOptions?: PopulateOptions<T>): Promise<T | T[]> {
+    public async create(data: T, profileId?: ObjectId, populateOptions?: PopulateOptions<T>): Promise<T>;
+    public async create(data: T[], profileId?: ObjectId, populateOptions?: PopulateOptions<T>): Promise<T[]>;
+    public async create(data: T | T[], profileId?: ObjectId, populateOptions?: PopulateOptions<T>): Promise<T | T[]> {
         if (data instanceof Array) {
             data.forEach((item) => (item.creationPId = profileId));
         } else {
@@ -33,6 +33,7 @@ export class BaseModelService<T extends Base> {
         }
 
         try {
+            console.log('hey');
             const createdData = await this.model.create(data);
             const res: T | T[] | undefined = await this.read(
                 createdData instanceof Array ? createdData.map((item) => item._id) : createdData._id,
