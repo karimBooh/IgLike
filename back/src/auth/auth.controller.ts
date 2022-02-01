@@ -3,7 +3,7 @@ import { Request } from 'express';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guard/local-auth.guard';
 import { Public } from '../shared/decorator/public';
-import { User } from '../../../interfaces';
+import { User } from '@karibooh/ig-interfaces';
 import { UserService } from '../user/user.service';
 import { ObjectId } from 'bson';
 

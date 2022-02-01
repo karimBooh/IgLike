@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
-import { Base, User } from '../../../../interfaces';
+import { Base, User } from '@karibooh/ig-interfaces';
 
 @Schema()
 export class BaseSchema implements Base {

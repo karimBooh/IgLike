@@ -9,7 +9,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import logo from '../../assets/instagram.png';
 import { useForm } from 'react-hook-form';
 import { onSubmit } from './login.controller';
-import { User } from '../../../../interfaces/user';
+import { User } from '@karibooh/ig-interfaces';
 
 export function Login() {
     const { register, handleSubmit, formState } = useForm<User>({ mode: 'onChange' });

@@ -1,4 +1,4 @@
-import { EGender, User } from '../../../interfaces/user';
+import { EGender, User } from '@karibooh/ig-interfaces';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 import { BaseSchema } from '../shared/base-model/base-model.schema';

@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { User } from '../../../../interfaces/user';
+import { User } from '@karibooh/ig-interfaces';
 import jwtDecode from 'jwt-decode';
 
 export function useGetUser(): [User | undefined, Dispatch<SetStateAction<User>>] {

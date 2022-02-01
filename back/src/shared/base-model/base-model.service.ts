@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable, InternalServerErrorException, Type } from '@nestjs/common';
 import { FilterQuery, Model, Query, HydratedDocument } from 'mongoose';
-import { Base } from './../../../../interfaces';
+import { Base } from '@karibooh/ig-interfaces';
 import { ObjectId } from 'bson';
 
 export type PopulateOptions<T extends Base> = {

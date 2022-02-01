@@ -3,7 +3,7 @@ import { BaseModelService } from '../shared/base-model/base-model.service';
 import { InjectModel } from '@nestjs/mongoose';
 import { UserSchema } from '../schemas/user.schema';
 import { Model } from 'mongoose';
-import { User } from '../../../interfaces';
+import { User } from '@karibooh/ig-interfaces';
 
 @Injectable()
 export class UserService extends BaseModelService<User> {

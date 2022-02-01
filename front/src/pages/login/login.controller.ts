@@ -1,6 +1,6 @@
 import { AuthService } from '../../services/Auth/auth.service';
 import { useJwt } from '../../hooks/auth/useJwt';
-import { User } from '../../../../interfaces/user';
+import { User } from '@karibooh/ig-interfaces';
 import { useNavigate } from 'react-router-dom';
 
 const auth = new AuthService();

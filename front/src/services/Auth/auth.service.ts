@@ -1,5 +1,5 @@
 import { HttpService } from '../http.service';
-import { User } from '../../../../interfaces/user';
+import { User } from '@karibooh/ig-interfaces';
 
 export class AuthService extends HttpService<User> {
     constructor() {
