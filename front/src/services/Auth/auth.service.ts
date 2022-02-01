@@ -7,7 +7,7 @@ export class AuthService extends HttpService<User> {
     }
 
     async signUp(user: User): Promise<User> {
-        return await this.post('/signUp', user);
+        return await this.post('/signup', user);
     }
 
     async connection(user: Pick<User, 'email' | 'password'>): Promise<string> {

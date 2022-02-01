@@ -7,7 +7,7 @@ export class HttpService<T> {
     constructor(baseUrl: string) {
         this.baseUrl = baseUrl;
         this.http = axios.create({
-            baseURL: baseUrl
+            baseURL: 'http://localhost:8080' + baseUrl
         });
         this.jwtInterceptor();
     }
