@@ -1,2 +1,2 @@
 export { Base } from './base';
-export { User } from './user';
+export { User, EGender } from './user';
