@@ -12,6 +12,6 @@ export class UserService extends BaseModelService<User> {
     }
 
     async getByEmailAndPassword(user: Pick<User, 'password' | 'email'>): Promise<User> {
-        return await this.userModel.findOne({ email: user.email, password: user.password }).exec();
+        return await this.userModel.findOne({ email: user.email }).select('+password').exec();
     }
 }

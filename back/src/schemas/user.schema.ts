@@ -1,6 +1,7 @@
 import { EGender, User } from '@karibooh/ig-interfaces';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { BaseSchema } from '../shared/base-model/base-model.schema';
+import * as bcrypt from 'bcrypt';
 
 @Schema()
 export class UserSchema extends BaseSchema implements User {
@@ -24,7 +25,21 @@ export class UserSchema extends BaseSchema implements User {
     @Prop()
     birthday: Date;
 
-    @Prop()
+    @Prop({
+        set: (plaintext: string) => {
+            if (/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$&+,:;=?@#|'<>*()%!]).{8,}$/.test(plaintext)) {
+                return bcrypt.hashSync(plaintext, bcrypt.genSaltSync());
+            }
+            return 'error';
+        },
+        validate: {
+            validator: (v: string) => {
+                return /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$/.test(v);
+            },
+            message: 'Invalid password format'
+        },
+        select: false
+    })
     password: string;
 
     @Prop()

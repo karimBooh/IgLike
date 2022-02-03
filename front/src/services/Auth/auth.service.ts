@@ -11,6 +11,8 @@ export class AuthService extends HttpService<any> {
     }
 
     async connection(user: Pick<User, 'email' | 'password'>): Promise<{ access_token: string }> {
-        return this.post('/login', user);
+        const response = await this.post('/login', user);
+        console.log(response.data);
+        return response.data;
     }
 }

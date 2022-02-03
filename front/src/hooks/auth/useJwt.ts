@@ -4,6 +4,7 @@ export function useJwt() {
     const [jwt, setJwt] = useState(localStorage.getItem('jwt') as string);
 
     useEffect(() => {
+        console.log('useEffect');
         localStorage.setItem('jwt', jwt);
     }, [jwt]);
 
