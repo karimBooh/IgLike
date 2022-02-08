@@ -2,7 +2,7 @@ import { BaseSchema } from '../shared/base-model/base-model.schema';
 import { Media, mediaBinary, User } from '@karibooh/ig-interfaces';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ObjectId } from 'bson';
-import mongoose from 'mongoose';
+import * as mongoose from 'mongoose';
 
 @Schema()
 export class MediaSchema extends BaseSchema implements Media {
