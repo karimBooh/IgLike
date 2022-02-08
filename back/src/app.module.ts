@@ -6,9 +6,10 @@ import { UserModule } from './user/user.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/guard/jwt.guard';
+import { MediaModule } from './media/media.module';
 
 @Module({
-    imports: [AuthModule, UserModule, MongooseModule.forRoot('mongodb://localhost/igLike')],
+    imports: [AuthModule, UserModule, MongooseModule.forRoot('mongodb://localhost/igLike'), MediaModule],
     controllers: [AppController],
     providers: [
         AppService,

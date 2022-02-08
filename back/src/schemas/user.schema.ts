@@ -2,16 +2,21 @@ import { EGender, User } from '@karibooh/ig-interfaces';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { BaseSchema } from '../shared/base-model/base-model.schema';
 import * as bcrypt from 'bcrypt';
+import { ObjectId } from 'bson';
+import * as mongoose from 'mongoose';
 
 @Schema()
 export class UserSchema extends BaseSchema implements User {
     @Prop()
     name: string;
 
-    @Prop()
+    @Prop({
+        unique: true
+    })
     username: string;
 
     @Prop({
+        unique: true,
         match: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     })
     email: string;
@@ -44,6 +49,18 @@ export class UserSchema extends BaseSchema implements User {
 
     @Prop()
     isAdmin?: boolean;
+
+    @Prop()
+    CGU: Date;
+
+    @Prop([{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }])
+    followers: Array<User | ObjectId>;
+
+    @Prop([{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }])
+    subscribers: Array<User | ObjectId>;
+
+    @Prop()
+    isPublic: boolean;
 }
 
 export const schema = SchemaFactory.createForClass(UserSchema);

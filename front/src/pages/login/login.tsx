@@ -8,11 +8,13 @@ import { Link } from 'react-router-dom';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import logo from '../../assets/instagram.png';
 import { useForm } from 'react-hook-form';
-import { onSubmit } from './login.controller';
+import useLoginController from './login.controller';
 import { User } from '@karibooh/ig-interfaces';
 
 export function Login() {
+    console.log('login');
     const { register, handleSubmit, formState } = useForm<User>({ mode: 'onChange' });
+    const { onSubmit } = useLoginController();
 
     return (
         <Layout>

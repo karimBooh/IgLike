@@ -1,4 +1,5 @@
 import { Base } from './base';
+import { ObjectId } from 'bson';
 
 export enum EGender {
     MALE,
@@ -15,6 +16,9 @@ export class User extends Base {
     password?: string;
     CGU?: Date;
     phone?: string;
+    followers: Array<User | ObjectId>;
+    subscribers: Array<User | ObjectId>;
+    isPublic: boolean;
 
     constructor(user: any) {
         super(user);
@@ -55,6 +59,24 @@ export class User extends Base {
 
         if (user.phone) {
             this.phone = user.phone;
+        }
+
+        if (user.followers) {
+            this.followers = user.followers;
+        } else {
+            this.followers = [];
+        }
+
+        if (user.subscribers) {
+            this.subscribers = user.subscribers;
+        } else {
+            this.subscribers = [];
+        }
+
+        if (user.isPublic) {
+            this.isPublic = user.isPublic;
+        } else {
+            this.isPublic = false;
         }
     }
 }

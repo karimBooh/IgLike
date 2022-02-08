@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { BaseModelService } from '../shared/base-model/base-model.service';
 import { InjectModel } from '@nestjs/mongoose';
 import { UserSchema } from '../schemas/user.schema';
@@ -12,6 +12,10 @@ export class UserService extends BaseModelService<User> {
     }
 
     async getByEmailAndPassword(user: Pick<User, 'password' | 'email'>): Promise<User> {
-        return await this.userModel.findOne({ email: user.email }).select('+password').exec();
+        const usr = await this.userModel.findOne({ email: user.email }).select('+password').exec();
+        if (!usr) {
+            throw new NotFoundException();
+        }
+        return usr;
     }
 }

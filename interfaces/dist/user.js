@@ -44,6 +44,24 @@ class User extends base_1.Base {
         if (user.phone) {
             this.phone = user.phone;
         }
+        if (user.followers) {
+            this.followers = user.followers;
+        }
+        else {
+            this.followers = [];
+        }
+        if (user.subscribers) {
+            this.subscribers = user.subscribers;
+        }
+        else {
+            this.subscribers = [];
+        }
+        if (user.isPublic) {
+            this.isPublic = user.isPublic;
+        }
+        else {
+            this.isPublic = false;
+        }
     }
 }
 exports.User = User;
