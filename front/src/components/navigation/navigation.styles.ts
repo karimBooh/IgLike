@@ -17,3 +17,7 @@ export const GridNav = styled(Grid).attrs(() => ({
     alignItems: 'center',
     container: true
 }))``;
+
+export const RedirectButton = styled.div`
+    display: flex;
+`;
