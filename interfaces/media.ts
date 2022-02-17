@@ -13,41 +13,47 @@ export interface mediaBinary {
 }
 
 export class Media extends Base {
-    medias: Array<mediaBinary>;
-    description?: string;
-    user: User | ObjectId;
-    date: Date;
-    references?: Array<User | ObjectId>;
+    length: number;
+    chunkSize: number;
+    uploadDate: Date;
+    fileName: string;
+    metadata: {
+        description?: string;
+        user: User | ObjectId;
+        references?: Array<User | ObjectId>;
+    };
 
     constructor(media: any) {
         super(media);
 
-        if (media.medias) {
-            this.medias = media.medias;
+        if (media.length) {
+            this.length = media.length;
         } else {
-            throw new Error('No media ');
+            throw new Error('length missing ');
         }
 
-        if (media.description) {
-            this.description = media.description;
+        if (media.chunkSize) {
+            this.chunkSize = media.chunkSize;
+        } else {
+            throw new Error('chunck size missing');
         }
 
-        if (media.user) {
-            this.user = media.user;
+        if (media.uploadDate) {
+            this.uploadDate = media.uploadDate;
+        } else {
+            this.uploadDate = new Date();
+        }
+
+        if (media.fileName) {
+            this.fileName = media.fileName;
         } else {
             throw new Error('');
         }
 
-        if (media.date) {
-            this.date = media.date;
+        if (media.metadata) {
+            this.metadata = media.metadata;
         } else {
-            this.date = new Date();
-        }
-
-        if (media.references) {
-            this.references = media.references;
-        } else {
-            this.references = [];
+            throw new Error('missing element');
         }
     }
 }

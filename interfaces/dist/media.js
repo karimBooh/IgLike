@@ -10,32 +10,35 @@ var mediaType;
 class Media extends base_1.Base {
     constructor(media) {
         super(media);
-        if (media.medias) {
-            this.medias = media.medias;
+        if (media.length) {
+            this.length = media.length;
         }
         else {
-            throw new Error('No media ');
+            throw new Error('length missing ');
         }
-        if (media.description) {
-            this.description = media.description;
+        if (media.chunkSize) {
+            this.chunkSize = media.chunkSize;
         }
-        if (media.user) {
-            this.user = media.user;
+        else {
+            throw new Error('chunck size missing');
+        }
+        if (media.uploadDate) {
+            this.uploadDate = media.uploadDate;
+        }
+        else {
+            this.uploadDate = new Date();
+        }
+        if (media.fileName) {
+            this.fileName = media.fileName;
         }
         else {
             throw new Error('');
         }
-        if (media.date) {
-            this.date = media.date;
+        if (media.metadata) {
+            this.metadata = media.metadata;
         }
         else {
-            this.date = new Date();
-        }
-        if (media.references) {
-            this.references = media.references;
-        }
-        else {
-            this.references = [];
+            throw new Error('missing element');
         }
     }
 }
