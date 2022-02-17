@@ -1,11 +1,12 @@
 import React from 'react';
 import { Container } from '@mui/material';
-import { Navigation } from '../../components/navigation/navigation';
+import useFeedController from './feed.controller';
 
 export function Feed() {
+    const { medias, setMedias } = useFeedController();
+
     return (
         <>
-            <Navigation />
             <Container maxWidth={'md'}>feed</Container>;
         </>
     );

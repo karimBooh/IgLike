@@ -16,6 +16,7 @@ function App() {
                 <Route path={'/signup'} element={<SignUp />} />
                 <Route element={<PrivateRoute />}>
                     <Route path={'/'} element={<Feed />} />
+                    <Route path={'/explore'} element={<div> 404 </div>} />
                 </Route>
                 <Route path={'*'} element={<div> 404 </div>} />
             </Routes>

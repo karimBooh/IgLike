@@ -1,8 +1,8 @@
-import { Body, Controller, Get, Param, Post, Req } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { MediaService } from './media.service';
 import { ObjectId } from 'bson';
-import { Media, User } from '@karibooh/ig-interfaces';
-import { Request } from 'express';
+import { Media } from '@karibooh/ig-interfaces';
+import { Readable } from 'stream';
 
 @Controller('media')
 export class MediaController {
@@ -10,11 +10,12 @@ export class MediaController {
 
     @Get('/:id')
     getMedia(@Param('id') id: ObjectId): Promise<Array<Media>> {
-        return this._mediaService.readAll({ where: { user: id }, populate: { path: 'user' } });
+        return this._mediaService.readFromUser(id);
     }
 
     @Post('')
-    postMedia(@Body() media: Media, @Req() req: Request) {
-        return this._mediaService.create(media, (req.user as User)._id);
+    postMedia(@Body() media: Media) {
+        const stream = Readable.from([]);
+        return this._mediaService.uploadFile(stream, media);
     }
 }

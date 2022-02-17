@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Login } from '../../pages/login/login';
 import { Outlet } from 'react-router';
 import { useGetUser } from '../../hooks/auth/useGetUser';
+import { Navigation } from '../navigation/navigation';
 
 export function PrivateRoute() {
     console.log('private route');
@@ -11,5 +12,12 @@ export function PrivateRoute() {
         console.log(user);
     }, [user]);
 
-    return user ? <Outlet /> : <Login />;
+    return user ? (
+        <>
+            <Navigation />
+            <Outlet />
+        </>
+    ) : (
+        <Login />
+    );
 }

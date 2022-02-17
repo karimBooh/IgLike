@@ -6,7 +6,7 @@ import { IconButton } from '@mui/material';
 import { AccountBoxOutlined, AddBoxOutlined, Explore, FavoriteBorderOutlined, HomeRounded } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
-export function Navigation() {
+export function Navigation(props: any) {
     return (
         <NavigationStyles>
             <ContainerStyles maxWidth={'md'}>
@@ -25,8 +25,8 @@ export function Navigation() {
                                 <AddBoxOutlined />
                             </IconButton>
                         </label>
-                        <Link to={'/explor'}>
-                            <IconButton aria-label="explor">
+                        <Link to={'/explore'}>
+                            <IconButton aria-label="explore">
                                 <Explore />
                             </IconButton>
                         </Link>

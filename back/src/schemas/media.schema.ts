@@ -1,5 +1,5 @@
 import { BaseSchema } from '../shared/base-model/base-model.schema';
-import { Media, mediaBinary, User } from '@karibooh/ig-interfaces';
+import { Media, User } from '@karibooh/ig-interfaces';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ObjectId } from 'bson';
 import * as mongoose from 'mongoose';
@@ -7,19 +7,15 @@ import * as mongoose from 'mongoose';
 @Schema()
 export class MediaSchema extends BaseSchema implements Media {
     @Prop()
-    date: Date;
-
+    chunkSize: number;
     @Prop()
-    description: string;
-
+    fileName: string;
     @Prop()
-    medias: Array<mediaBinary>;
-
-    @Prop([{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }])
-    references: Array<User | ObjectId>;
-
-    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
-    user: User | ObjectId;
+    length: number;
+    @Prop({ type: mongoose.Schema.Types.Mixed })
+    metadata: { description?: string; user: User | ObjectId; references?: Array<User | ObjectId> };
+    @Prop()
+    uploadDate: Date;
 }
 
 export const schema = SchemaFactory.createForClass(MediaSchema);
